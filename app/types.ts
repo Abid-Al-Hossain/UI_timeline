@@ -27,13 +27,15 @@ export type TimelineState = {
   previewState: "default" | "hover" | "focus" | "active" | "open" | "closed" | "selected" | "loading" | "empty" | "error" | "success";
   motion: boolean;
   disabled: boolean;
-  role: "region" | "group" | "status" | "alert" | "dialog" | "menu" | "menubar" | "navigation" | "list" | "tree" | "table" | "tablist" | "form" | "textbox" | "img" | "application";
+  role: "region" | "list";
   itemCount: number;
+  currentItem?: number;
+  collapsed?: boolean;
   orientation: "horizontal" | "vertical";
   alternating: boolean;
-  markerStyle: string;
-  connectorStyle: string;
-  datePlacement: string;
+  markerStyle: "dot" | "number" | "icon";
+  connectorStyle: "solid" | "dashed" | "dotted";
+  datePlacement: "side" | "top" | "hidden";
 };
 
 export type StudioPreset = { id: string; family: string; archetype: string; variant: string; size: string; tags: string[]; state: TimelineState };

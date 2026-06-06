@@ -2,6 +2,7 @@
 
 import { SectionCard } from "@/components/shared/layout/SectionCard";
 import Select from "@/components/shared/input/Select";
+import Switch from "@/components/shared/input/Switch";
 import type { TimelineState } from "../types";
 
 type Props = { state: TimelineState; update: <K extends keyof TimelineState>(key: K, value: TimelineState[K]) => void };
@@ -19,5 +20,6 @@ export default function StatesSection({ state, update }: Props) {
   "empty",
   "error",
   "success"
-]} onChange={(value) => update("previewState", value)} /></SectionCard>;
+]} onChange={(value) => update("previewState", value)} />
+<Switch label="Collapsed timeline" checked={Boolean(state.collapsed || state.previewState === "closed")} onChange={(value) => update("collapsed", value)} /></SectionCard>;
 }
