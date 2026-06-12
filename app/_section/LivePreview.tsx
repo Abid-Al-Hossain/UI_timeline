@@ -32,7 +32,7 @@ export default function LivePreview({ state }: { state: TimelineState }) {
 
           return (
             <li key={event.id} role="listitem" aria-current={isCurrent ? "step" : undefined} className={alignEnd ? "grid justify-items-end text-right" : "grid justify-items-start text-left"}>
-              <article className={isHorizontal ? "grid h-full gap-3" : "grid max-w-[34rem] gap-3"} style={{ opacity: event.status === "upcoming" ? 0.72 : 1 }}>
+              <article className={isHorizontal ? "grid h-full gap-3" : "grid max-w-[34rem] gap-3"} style={{ opacity: event.status === "upcoming" ? 0.72 : 1, transition: state.motion ? "opacity 0.25s ease, transform 0.25s ease" : "none" }}>
                 <div className={isHorizontal ? "grid grid-cols-[auto_1fr] items-center gap-3" : "grid grid-cols-[auto_1fr] items-start gap-3"}>
                   <span aria-hidden="true" className="grid size-9 place-items-center rounded-full border text-xs font-bold" style={{ borderColor: isCurrent ? state.accent : state.border, background: isCurrent ? state.accent : "color-mix(in oklab, var(--card) 78%, transparent)", color: isCurrent ? "#020617" : state.foreground }}>{markerText}</span>
                   <span aria-hidden="true" className={isHorizontal ? "h-px w-full self-center" : "h-12 w-px justify-self-center"} style={{ borderTop: isHorizontal ? `1px ${state.connectorStyle} ${state.border}` : undefined, borderLeft: isHorizontal ? undefined : `1px ${state.connectorStyle} ${state.border}`, opacity: index === visibleEvents.length - 1 ? 0 : 1 }} />

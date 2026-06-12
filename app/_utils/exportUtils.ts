@@ -75,7 +75,7 @@ export function buildReactCode(state: TimelineState) {
     "",
     "          return (",
     "            <li key={event.id} role=\"listitem\" aria-current={isCurrent ? \"step\" : undefined} style={{ display: \"grid\", justifyItems: alignEnd ? \"end\" : \"start\", textAlign: alignEnd ? \"right\" : \"left\" }}>",
-    "              <article style={{ display: \"grid\", gap: 12, maxWidth: isHorizontal ? undefined : 544, height: isHorizontal ? \"100%\" : undefined, opacity: event.status === \"upcoming\" ? 0.72 : 1 }}>",
+    "              <article style={{ display: \"grid\", gap: 12, maxWidth: isHorizontal ? undefined : 544, height: isHorizontal ? \"100%\" : undefined, opacity: event.status === \"upcoming\" ? 0.72 : 1, transition: state.motion ? \"opacity 0.25s ease, transform 0.25s ease\" : \"none\" }}>",
     "                <div style={{ display: \"grid\", gridTemplateColumns: \"auto 1fr\", alignItems: isHorizontal ? \"center\" : \"start\", gap: 12 }}>",
     "                  <span aria-hidden=\"true\" style={{ display: \"grid\", placeItems: \"center\", width: 36, height: 36, borderRadius: 999, border: \"1px solid \" + (isCurrent ? state.accent : state.border), background: isCurrent ? state.accent : \"transparent\", color: isCurrent ? \"#020617\" : state.foreground, fontSize: 12, fontWeight: 700 }}>{markerText}</span>",
     "                  <span aria-hidden=\"true\" style={{ width: isHorizontal ? \"100%\" : 1, height: isHorizontal ? 1 : 48, borderTop: isHorizontal ? \"1px \" + state.connectorStyle + \" \" + state.border : undefined, borderLeft: isHorizontal ? undefined : \"1px \" + state.connectorStyle + \" \" + state.border, opacity: index === visibleEvents.length - 1 ? 0 : 1 }} />",
