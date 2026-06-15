@@ -1,4 +1,4 @@
-export type SectionId = "presets" | "basics" | "metadata" | "content" | "items" | "behavior" | "layout" | "placement" | "sizing" | "colors" | "border" | "radius" | "shadow" | "typography" | "transitions" | "focus-ring" | "states" | "accessibility";
+export type SectionId = "presets" | "basics" | "metadata" | "content" | "items" | "behavior" | "layout" | "placement" | "sizing" | "colors" | "border" | "radius" | "shadow" | "typography" | "transitions" | "focus-ring" | "states" | "disabled" | "accessibility";
 
 export type TimelineState = {
   title: string;
@@ -54,11 +54,18 @@ export type TimelineState = {
   muted: string;
   accent: string;
   border: string;
+  actionText: string;
   titleSize: number;
   bodySize: number;
   fontWeight: number;
   previewState: "default" | "hover" | "focus" | "active" | "open" | "closed" | "selected" | "loading" | "empty" | "error" | "success";
   disabled: boolean;
+  disabledOpacity: number;
+  disabledCursor: "not-allowed" | "default" | "pointer";
+  disabledUseCustomColors: boolean;
+  disabledBg: string;
+  disabledText: string;
+  disabledBorder: string;
   role: "region" | "list";
   itemCount: number;
   currentItem?: number;
@@ -68,6 +75,33 @@ export type TimelineState = {
   markerStyle: "dot" | "number" | "icon";
   connectorStyle: "solid" | "dashed" | "dotted";
   datePlacement: "side" | "top" | "hidden";
+  // Marker (default)
+  markerBg: string;
+  markerText: string;
+  markerBorder: string;
+  markerSize: number;
+  markerRadius: number;
+  markerIconColor: string;
+  // Marker states
+  markerActiveBg: string;
+  markerActiveText: string;
+  markerCompletedBg: string;
+  markerCompletedText: string;
+  // Connector
+  connectorColor: string;
+  connectorWidth: number;
+  connectorCompletedColor: string;
+  // Event card
+  itemCardBg: string;
+  itemCardBorder: string;
+  itemCardRadius: number;
+  itemCardPadding: number;
+  // Text
+  dateColor: string;
+  dateSize: number;
+  eventTitleColor: string;
+  bodyColor: string;
+  itemGap: number;
 };
 
 export type StudioPreset = { id: string; family: string; archetype: string; variant: string; size: string; tags: string[]; state: Partial<TimelineState> & Record<string, unknown> };
@@ -140,6 +174,10 @@ export const SECTIONS: Array<{ id: SectionId; label: string }> = [
   {
     "id": "states",
     "label": "State Preview"
+  },
+  {
+    "id": "disabled",
+    "label": "Disabled"
   },
   {
     "id": "accessibility",
