@@ -8,7 +8,8 @@ import type { TimelineState } from "../types";
 type Props = { state: TimelineState; update: <K extends keyof TimelineState>(key: K, value: TimelineState[K]) => void };
 
 export default function LayoutSection({ state, update }: Props) {
-  return <SectionCard title="Layout" subtitle="Layout controls for native timeline generation."><Select label="Orientation" value={state.orientation} options={[
+  return <SectionCard title="Layout" subtitle="Layout controls for native timeline generation.">
+      <div className="space-y-4"><Select label="Orientation" value={state.orientation} options={[
   "horizontal",
   "vertical"
 ]} onChange={(value) => update("orientation", value)} />
@@ -27,5 +28,6 @@ export default function LayoutSection({ state, update }: Props) {
   "side",
   "top",
   "hidden"
-]} onChange={(value) => update("datePlacement", value)} /></SectionCard>;
+]} onChange={(value) => update("datePlacement", value)} /></div>
+    </SectionCard>;
 }
